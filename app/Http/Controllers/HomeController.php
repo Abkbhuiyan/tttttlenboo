@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Item;
 use App\Price;
+use App\SampleVideo;
 use App\Slider;
 use Illuminate\Http\Request;
 
@@ -27,13 +28,15 @@ class HomeController extends Controller
          $price=Price::all();
          $items=Item::all();
          $category=Category::all();
-        return view('frontend.welcome',compact('sliders','items','price','category'));
+         $sample=SampleVideo::all();
+        return view('frontend.welcome',compact('sliders','items','price','category','sample'));
     }
 
     public function allVideo(){
         $sliders=Slider::all();
         $items=Item::all();
-        return view('frontend.partial.myVideos',compact('sliders','items'));
+        $category=Category::all();
+        return view('frontend.partial.myVideos',compact('sliders','items','category'));
     }
 
     public function faq(){

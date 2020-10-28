@@ -27,12 +27,19 @@
               <p>Category</p>
             </a>
           </li>
-          <li class="nav-item {{Request::is('admin/item*') ? 'active' :''}} ">
-            <a class="nav-link" href="{{route('item.index')}}">
-              <i class="material-icons">unarchive</i>
-              <p>Videos</p>
+          <li class="nav-item {{Request::is('admin/sampleVideo*') ? 'active' :''}} ">
+            <a class="nav-link" href="{{route('sampleVideo.index')}}">
+              <i class="material-icons">important_devices</i>
+              <p>Sample Videos</p>
             </a>
           </li>
+
+            <li class="nav-item {{Request::is('admin/item*') ? 'active' :''}} ">
+                <a class="nav-link" href="{{route('item.index')}}">
+                    <i class="material-icons">unarchive</i>
+                    <p>Videos</p>
+                </a>
+            </li>
 
             <li class="nav-item {{Request::is('admin/reservation*') ? 'active' :''}} ">
                 <a class="nav-link" href="{{route('reservation.index')}}">

@@ -33,5 +33,6 @@ Route::group(['prefix'=>'admin','middleware'=>'auth','namespace'=>'admin'],funct
    Route::post('reservation/{id}','reservationController@destroy')->name('reservation.destroy');
    Route::resource('settings','SettingsController');
    Route::resource('price','PriceController');
+   Route::resource('sampleVideo','SampleVideoController');
 
 });

@@ -2,24 +2,24 @@
     <div class="container">
         <div class="row">
             <!-- Start Single Service -->
-          @foreach($items as $key=>$item)
+          @foreach($sample as $key=>$sample)
 
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="service bg--white--{{$key +1 }} border__color wow fadeInUp">
                         <div class="service__icon">
-                            <img src="{{asset('uploade/thumbnail/'.$item->thumbnail)}}">
-                            <span class="badge">{{$items->count()}}</span>
+                            <img src="{{asset('uploade/sample/thumbnail/'.$sample->thumbnail)}}">
+                            <span class="badge">{{$sample->count()}}</span>
                         </div>
                         <div class="service__details">
                             <div class="service__btn">
                                 <button type="button" class="btn btn-success video-btn" data-toggle="modal"
-                                        data-src="{{asset('uploade/item/'.$item->image)}}" data-target="#myModal">
+                                        data-src="{{asset('uploade/sample/item/'.$sample->image)}}" data-target="#myModal">
                                     <i class="fa fa-play"></i>
 
                                 </button>
                             </div><br><br>
-                            <h6>{{$item->name}}</h6>
-                            <p>{{$item->description}}</p>
+                            <h6>{{$sample->name}}</h6>
+                            <p>{{$sample->description}}</p>
                         </div>
                     </div>
                 </div>
