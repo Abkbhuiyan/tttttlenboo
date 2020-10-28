@@ -14,7 +14,7 @@
                             <div class="service__btn">
                                 <button type="button" class="btn btn-success video-btn" data-toggle="modal"
                                         data-src="{{asset('uploade/item/'.$item->image)}}" data-target="#myModal">
-                                    <i class="fa fa-play">playfff</i>
+                                    <i class="fa fa-play"></i>
 
                                 </button>
                             </div><br><br>
