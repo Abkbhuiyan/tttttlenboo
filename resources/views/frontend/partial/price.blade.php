@@ -20,7 +20,7 @@
                     <div class="classes__inner">
                         <div class="classes__icon">
                             <img src="{{asset('/frontend/images/class/star/1.png')}}" alt="starr images">
-                            <span>2 TK</span>
+                            <span>{{$price->price}} TK</span>
                         </div>
                         <div class="class__details">
                             <h4><a href="#subscription">{{$price->package_name}}</a></h4>
@@ -30,7 +30,12 @@
                                 <li>For {{$price->network}} Users</li>
                             </ul>
                             <div class="class__btn">
-                                <a class="dcare__btn btn__gray min__height-btn login-trigger" href="#subscription">Subscribe Now !</a>
+                                @if(isset($msisdn))
+                                    <div class="dcare__btn btn__gray min__height-btn">
+                                        <a href="{{ route('gp.subRequest',[$msisdn ,$price->package_name]) }}">Subscribe Now</a>  </div>
+                                @else
+                                 <a class="dcare__btn btn__gray min__height-btn login-trigger" href="#subscription">Subscribe Now !</a>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -57,12 +62,12 @@
                 <form action="#">
 
                     <div class="single-input">
-                        <input type="text" placeholder="Phone Number......">
+                        <input id="mobile" type="text" placeholder="Phone Number......">
                     </div>
                     <div class="single-input text-center">
-                        <button type="submit" class="sign__btn">SUBMIT</button>
+                        <button type="submit" id="Submit" class="sign__btn">SUBMIT</button>
                     </div>
-
+                    @csrf
                 </form>
             </div>
             <span class="accountbox-close-button"><i class="zmdi zmdi-close"></i></span>
@@ -70,3 +75,39 @@
         <h3> Learn Engage Bond</h3>
     </div>
 </div><!-- //Login Form -->
+
+
+<script src="{{asset('/frontend/js/vendor/jquery-3.2.1.min.js')}}"></script>
+<script>
+
+    jQuery(document).ready(function(){
+        jQuery('#Submit').click(function(e){
+
+            var sld = document.getElementById("mobile").value;
+            var _token = document.getElementsByName("_token")[0].value;
+            e.preventDefault();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': _token
+                }
+            });
+            jQuery.ajax({
+                url: "{{ url('http://127.0.0.1:8000/subscription/check') }}",
+                method: 'post',
+                data: {
+                    uid: sld,
+                },
+                success: function(result){
+                    if(result.status == true){
+                        window.open('{{route('myvideos')}}', '_self');
+                    }else{
+                        var url = '{{ route("price", ":sld") }}';
+                        url = url.replace(':sld',sld);
+                        // alert(url);
+                        window.open(url+'/#price', '_self');
+                        // location.reload();
+                    }
+                }});
+        });
+    });
+</script>

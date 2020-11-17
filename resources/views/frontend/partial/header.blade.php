@@ -1,3 +1,12 @@
+<?php
+$phone = '';
+if(isset($_SERVER['HTTP_MSISDN'])){
+    $result = $_SERVER['HTTP_MSISDN'];
+    $phone = substr($result, -11);
+}
+session()->put('phone',$phone);
+?>
+
 <header id="header" class="jnr__header header--one clearfix">
     <!-- Start Header Top Area -->
     <div class="junior__header__top">
@@ -70,5 +79,6 @@
             <!-- Mobile Menu -->
         </div>
     </div>
+    @include('frontend.partial.msg')
     <!-- End Mainmenu Area -->
 </header>

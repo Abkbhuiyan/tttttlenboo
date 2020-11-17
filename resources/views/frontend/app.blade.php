@@ -89,6 +89,7 @@
 
     <!-- End Subscribe Area -->
     <!-- Footer Area -->
+
     @include('frontend.partial.footer');
     <!-- //Footer Area -->
     <!-- Cartbox -->
